@@ -1,0 +1,60 @@
+/* --- Place these variables in your :root or body selector --- */
+:root {
+  --grid-color: rgba(255, 255, 255, 0.1);
+  --line-thickness: 1px;
+  --grid-size: 40px;
+  --animation-speed: 20s;
+}
+
+.grid-background {
+  background-color: #000;
+  /* Creates the horizontal and vertical lines */
+  background-image:
+    linear-gradient(var(--grid-color) var(--line-thickness), transparent var(--line-thickness)),
+    linear-gradient(90deg, var(--grid-color) var(--line-thickness), transparent var(--line-thickness));
+  /* Sets the size of the grid squares */
+  background-size: var(--grid-size) var(--grid-size);
+  /* Applies the animation */
+  animation: scrollGrid var(--animation-speed) linear infinite;
+}
+
+/* Defines the scrolling animation */
+@keyframes scrollGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    /* The position moves by one full grid square to create a seamless loop */
+    background-position: var(--grid-size) var(--grid-size);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
